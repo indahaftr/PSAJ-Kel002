@@ -1,14 +1,13 @@
-/* --- Konfigurasi Warna & Shadow --- */
+/* --- Root Variables: Palet Warna Pastel Bubbly --- */
 :root {
-  --bg-main: #fcfaf8;          /* Putih tulang yang lebih hangat */
-  --accent-blue: #bde0fe;      /* Biru muda pastel */
-  --accent-pink: #ffc8dd;      /* Pink pastel */
-  --dark-text: #495057;        /* Abu-abu gelap (lebih lembut dari hitam) */
-  --glass: rgba(255, 255, 255, 0.7); /* Efek kaca transparan */
-  --radius: 20px;              /* Lengkungan sudut yang modern */
+  --bubbly-blue: #c1e3ff;     /* Biru awan */
+  --bubbly-pink: #ffc2d1;     /* Pink permen */
+  --bubbly-white: #fffdfa;    /* Putih tulang hangat */
+  --bubbly-text: #5d576b;     /* Ungu tua keabu-abuan (lebih soft dari hitam) */
+  --soft-shadow: 0 10px 25px rgba(255, 194, 209, 0.2);
 }
 
-/* --- Dasar & Tipografi --- */
+/* --- Reset & Base --- */
 * {
   margin: 0;
   padding: 0;
@@ -17,26 +16,19 @@
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--dark-text);
+  background-color: var(--bubbly-white);
+  color: var(--bubbly-text);
   scroll-behavior: smooth;
 }
 
-/* --- Navigasi Melayang (Floating Nav) --- */
+/* --- Navigasi Bubbly --- */
 header {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%); /* Mengetengahkan header yang melayang */
-  width: 90%;
-  max-width: 1200px;
-  background: var(--glass);
-  backdrop-filter: blur(10px); /* Efek blur di belakang navigasi */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  padding: 15px 30px;
+  padding: 20px 5%;
+  position: sticky; /* Tetap di atas tapi mengikuti alur halaman */
+  top: 0;
+  background: rgba(255, 253, 250, 0.8);
+  backdrop-filter: blur(8px);
   z-index: 1000;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 nav {
@@ -46,121 +38,147 @@ nav {
 }
 
 .logo {
+  font-size: 1.4rem;
   font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--dark-text);
-}
-
-.logo span {
-  color: #ff8fab; /* Aksen pink lebih kontras */
+  background: var(--bubbly-pink);
+  padding: 5px 20px;
+  border-radius: 50px; /* Bentuk kapsul */
+  color: white;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 25px;
+  gap: 15px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--dark-text);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: 0.3s;
+  color: var(--bubbly-text);
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: 0.3s ease;
 }
 
+/* Efek hover menu yang bubbly */
 .nav-links a:hover {
-  color: #a2d2ff;
+  background: var(--bubbly-blue);
+  color: #5b99c2;
+  transform: scale(1.1);
 }
 
-/* --- Hero Section dengan Aksen Geometris --- */
+/* --- Hero Section --- */
 .hero-kelompok {
-  height: 100vh;
-  background: radial-gradient(circle at top right, var(--accent-blue), transparent),
-              radial-gradient(circle at bottom left, var(--accent-pink), transparent);
+  height: 80vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 20px;
 }
 
 .hero-overlay h1 {
-  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ukuran font otomatis menyesuaikan layar */
-  background: linear-gradient(to right, #495057, #ff8fab);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Membuat teks berwarna gradasi */
-  margin-bottom: 20px;
+  font-size: 3.5rem;
+  color: var(--bubbly-text);
+  margin-bottom: 10px;
 }
 
-/* --- Kartu Anggota (Gaya Minimalis) --- */
+/* Animasi mengembang pelan untuk Hero */
+.hero-overlay {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* --- Tombol Bubbly --- */
+.btn-cek {
+  display: inline-block;
+  padding: 12px 35px;
+  background: var(--bubbly-blue);
+  color: #5b99c2;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 5px 0px #9ec9e2; /* Shadow tebal seperti desain 3D */
+  transition: 0.2s;
+}
+
+.btn-cek:hover {
+  transform: translateY(3px); /* Turun sedikit saat diklik */
+  box-shadow: 0 2px 0px #9ec9e2;
+}
+
+/* --- Kartu Anggota (The Bubbly Cards) --- */
 .section-container {
-  padding: 100px 5%;
+  padding: 60px 10%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
 }
 
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 
 .kelompok-card {
-  background: #ffffff;
-  border-radius: var(--radius);
+  background: white;
+  border-radius: 30px; /* Sudut sangat bulat */
+  padding: 15px;
   text-decoration: none;
-  overflow: hidden;
-  border: 1px solid #eee;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi pegas */
+  color: inherit;
+  box-shadow: var(--soft-shadow);
+  transition: 0.3s;
+  border: 2px solid transparent;
 }
 
 .kelompok-card:hover {
-  transform: scale(1.03); /* Membesar sedikit saat hover */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  border-color: var(--bubbly-pink);
+  transform: rotate(2deg); /* Miring sedikit agar terkesan playful */
 }
 
 .card-img img {
   width: 100%;
-  height: 350px;
+  height: 250px;
   object-fit: cover;
-  filter: grayscale(20%); /* Memberi kesan estetik kalem */
-  transition: 0.4s;
+  border-radius: 20px; /* Foto juga ikut bulat */
+  margin-bottom: 15px;
 }
 
-.kelompok-card:hover img {
-  filter: grayscale(0%); /* Warna kembali penuh saat hover */
+.card-info h3 {
+  font-size: 1.1rem;
+  color: var(--bubbly-text);
 }
 
-.card-info {
-  padding: 20px;
-  background: white;
-}
-
-/* --- Laporan & Video --- */
+/* --- Konten Makalah & Video --- */
 .pdf-container, .video-container {
-  border-radius: var(--radius);
-  border: none;
-  box-shadow: 0 10px 30px rgba(162, 210, 255, 0.3); /* Shadow berwarna biru muda */
-  height: 600px;
-}
-
-/* --- Tombol Unduh --- */
-.btn-cek {
-  background: var(--accent-blue);
-  color: #fff;
-  border-radius: 12px;
-  padding: 12px 25px;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(162, 210, 255, 0.4);
-}
-
-.btn-cek:hover {
-  background: #90caf9;
-  transform: translateY(-2px);
+  border: 8px solid white; /* Frame tebal putih */
+  border-radius: 40px;
+  box-shadow: var(--soft-shadow);
+  overflow: hidden;
+  height: 500px;
 }
 
 /* --- Footer --- */
 footer {
+  background: var(--bubbly-pink);
+  color: white;
   padding: 40px;
   text-align: center;
-  font-size: 0.8rem;
-  border-top: 1px solid #eee;
+  border-radius: 50px 50px 0 0; /* Melengkung di bagian atas saja */
+  margin-top: 50px;
+}
+
+/* --- Mobile Responsif --- */
+@media (max-width: 768px) {
+  .hero-overlay h1 { font-size: 2.2rem; }
+  .section-container { padding: 40px 5%; }
 }
