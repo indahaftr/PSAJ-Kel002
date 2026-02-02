@@ -1,10 +1,11 @@
-/* --- Root Variables: Palet Warna Pastel Bubbly --- */
+/* --- Root Variables: Warna Pastel Kontras --- */
 :root {
-  --bubbly-blue: #c1e3ff;     /* Biru awan */
-  --bubbly-pink: #ffc2d1;     /* Pink permen */
-  --bubbly-white: #fffdfa;    /* Putih tulang hangat */
-  --bubbly-text: #5d576b;     /* Ungu tua keabu-abuan (lebih soft dari hitam) */
-  --soft-shadow: 0 10px 25px rgba(255, 194, 209, 0.2);
+  --bg-page: #fff5f8;       /* Pink putih tulang banget */
+  --ink: #2b2b2b;           /* Hitam tinta (biar nggak kaku) */
+  --blue-pop: #a2d2ff;      /* Biru muda */
+  --pink-pop: #ffafcc;      /* Pink bubbly */
+  --white: #ffffff;
+  --border-size: 3px;       /* Ketebalan garis tepi */
 }
 
 /* --- Reset & Base --- */
@@ -16,19 +17,20 @@
 }
 
 body {
-  background-color: var(--bubbly-white);
-  color: var(--bubbly-text);
-  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--ink);
+  padding: 20px; /* Memberi ruang di pinggir seluruh body */
 }
 
-/* --- Navigasi Bubbly --- */
+/* --- Navigasi Kotak-Kotak --- */
 header {
-  padding: 20px 5%;
-  position: sticky; /* Tetap di atas tapi mengikuti alur halaman */
-  top: 0;
-  background: rgba(255, 253, 250, 0.8);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  background: var(--white);
+  border: var(--border-size) solid var(--ink);
+  box-shadow: 6px 6px 0px var(--ink); /* Bayangan tajam khas Neo-Brutalism */
+  padding: 15px 30px;
+  border-radius: 15px;
 }
 
 nav {
@@ -38,147 +40,133 @@ nav {
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 600;
-  background: var(--bubbly-pink);
-  padding: 5px 20px;
-  border-radius: 50px; /* Bentuk kapsul */
-  color: white;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--pink-pop);
+  padding: 5px 15px;
+  border: 2px solid var(--ink);
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 15px;
+  gap: 20px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--bubbly-text);
-  font-weight: 600;
-  padding: 8px 15px;
-  border-radius: 20px;
-  transition: 0.3s ease;
+  color: var(--ink);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
-/* Efek hover menu yang bubbly */
 .nav-links a:hover {
-  background: var(--bubbly-blue);
-  color: #5b99c2;
-  transform: scale(1.1);
+  background: var(--blue-pop);
+  outline: 2px solid var(--ink);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section yang Gak Biasa --- */
 .hero-kelompok {
-  height: 80vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 20px;
+  align-items: center;
+  min-height: 60vh;
+  background: var(--blue-pop);
+  border: var(--border-size) solid var(--ink);
+  border-radius: 30px;
+  box-shadow: 12px 12px 0px var(--pink-pop); /* Bayangan warna pink */
+  margin-bottom: 80px;
 }
 
 .hero-overlay h1 {
-  font-size: 3.5rem;
-  color: var(--bubbly-text);
-  margin-bottom: 10px;
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--white);
+  -webkit-text-stroke: 2px var(--ink); /* Garis tepi di teks */
+  letter-spacing: -2px;
 }
 
-/* Animasi mengembang pelan untuk Hero */
-.hero-overlay {
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-/* --- Tombol Bubbly --- */
+/* --- Tombol "Klik Me" --- */
 .btn-cek {
-  display: inline-block;
-  padding: 12px 35px;
-  background: var(--bubbly-blue);
-  color: #5b99c2;
+  background: var(--pink-pop);
+  color: var(--ink);
+  padding: 15px 30px;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  box-shadow: 0 5px 0px #9ec9e2; /* Shadow tebal seperti desain 3D */
-  transition: 0.2s;
+  font-weight: 800;
+  border: var(--border-size) solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0px var(--ink);
+  transition: 0.1s;
 }
 
 .btn-cek:hover {
-  transform: translateY(3px); /* Turun sedikit saat diklik */
-  box-shadow: 0 2px 0px #9ec9e2;
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--ink);
 }
 
-/* --- Kartu Anggota (The Bubbly Cards) --- */
-.section-container {
-  padding: 60px 10%;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-}
-
+/* --- Kartu Anggota Zig-Zag --- */
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
 }
 
 .kelompok-card {
-  background: white;
-  border-radius: 30px; /* Sudut sangat bulat */
-  padding: 15px;
+  background: var(--white);
+  border: var(--border-size) solid var(--ink);
+  border-radius: 20px;
+  padding: 20px;
   text-decoration: none;
   color: inherit;
-  box-shadow: var(--soft-shadow);
-  transition: 0.3s;
-  border: 2px solid transparent;
+  box-shadow: 8px 8px 0px var(--blue-pop);
+  transition: 0.2s;
+}
+
+/* Efek kartu miring-miring lucu */
+.kelompok-card:nth-child(even) {
+  transform: rotate(-2deg);
+}
+.kelompok-card:nth-child(odd) {
+  transform: rotate(2deg);
 }
 
 .kelompok-card:hover {
-  border-color: var(--bubbly-pink);
-  transform: rotate(2deg); /* Miring sedikit agar terkesan playful */
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 10px 10px 0px var(--pink-pop);
 }
 
 .card-img img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border-radius: 20px; /* Foto juga ikut bulat */
-  margin-bottom: 15px;
+  border: var(--border-size) solid var(--ink);
+  border-radius: 15px;
 }
 
-.card-info h3 {
-  font-size: 1.1rem;
-  color: var(--bubbly-text);
-}
-
-/* --- Konten Makalah & Video --- */
+/* --- Laporan & Video Container --- */
 .pdf-container, .video-container {
-  border: 8px solid white; /* Frame tebal putih */
-  border-radius: 40px;
-  box-shadow: var(--soft-shadow);
+  border: var(--border-size) solid var(--ink);
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 15px 15px 0px var(--ink);
+  height: 600px;
   overflow: hidden;
-  height: 500px;
 }
 
 /* --- Footer --- */
 footer {
-  background: var(--bubbly-pink);
-  color: white;
+  margin-top: 100px;
   padding: 40px;
+  background: var(--ink);
+  color: var(--white);
   text-align: center;
-  border-radius: 50px 50px 0 0; /* Melengkung di bagian atas saja */
-  margin-top: 50px;
+  border-radius: 20px 20px 0 0;
 }
 
-/* --- Mobile Responsif --- */
+/* --- Mobile --- */
 @media (max-width: 768px) {
-  .hero-overlay h1 { font-size: 2.2rem; }
-  .section-container { padding: 40px 5%; }
+  .hero-overlay h1 { font-size: 3rem; }
+  .hero-kelompok { margin: 10px; }
 }
