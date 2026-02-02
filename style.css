@@ -1,214 +1,166 @@
-/* --- Root Variables: Untuk memudahkan pengaturan warna di seluruh dokumen --- */
+/* --- Konfigurasi Warna & Shadow --- */
 :root {
-  --biru-muda: #a2d2ff;
-  --pink-soft: #ffafcc;
-  --pink-dark: #fb6f92;
-  --putih-tulang: #f8f9fa;
-  --text-dark: #2d3436;
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --bg-main: #fcfaf8;          /* Putih tulang yang lebih hangat */
+  --accent-blue: #bde0fe;      /* Biru muda pastel */
+  --accent-pink: #ffc8dd;      /* Pink pastel */
+  --dark-text: #495057;        /* Abu-abu gelap (lebih lembut dari hitam) */
+  --glass: rgba(255, 255, 255, 0.7); /* Efek kaca transparan */
+  --radius: 20px;              /* Lengkungan sudut yang modern */
 }
 
-/* --- Reset Dasar --- */
+/* --- Dasar & Tipografi --- */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Agar padding tidak merusak lebar elemen */
-  scroll-behavior: smooth; /* Efek scrolling halus saat klik menu navigasi */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  color: var(--text-dark);
-  background-color: var(--putih-tulang);
+  background-color: var(--bg-main);
+  color: var(--dark-text);
+  scroll-behavior: smooth;
 }
 
-/* --- Navigasi --- */
+/* --- Navigasi Melayang (Floating Nav) --- */
 header {
-  background: #ffffff;
-  padding: 1rem 5%;
-  position: fixed; /* Navigasi tetap di atas saat di-scroll */
-  width: 100%;
-  top: 0;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* Mengetengahkan header yang melayang */
+  width: 90%;
+  max-width: 1200px;
+  background: var(--glass);
+  backdrop-filter: blur(10px); /* Efek blur di belakang navigasi */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 15px 30px;
   z-index: 1000;
-  box-shadow: var(--shadow);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 nav {
   display: flex;
-  justify-content: space-between; /* Logo di kiri, menu di kanan */
+  justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--biru-muda);
+  letter-spacing: 1px;
+  color: var(--dark-text);
 }
 
 .logo span {
-  color: var(--pink-soft);
+  color: #ff8fab; /* Aksen pink lebih kontras */
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-}
-
-.nav-links li {
-  margin-left: 20px;
+  gap: 25px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 400;
-  transition: 0.3s; /* Efek halus saat hover */
+  color: var(--dark-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
-  color: var(--pink-dark);
+  color: #a2d2ff;
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section dengan Aksen Geometris --- */
 .hero-kelompok {
-  height: 100vh; /* Memenuhi satu layar penuh */
-  background: linear-gradient(135deg, var(--biru-muda), var(--pink-soft));
+  height: 100vh;
+  background: radial-gradient(circle at top right, var(--accent-blue), transparent),
+              radial-gradient(circle at bottom left, var(--accent-pink), transparent);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  color: white;
-  padding-top: 80px;
 }
 
 .hero-overlay h1 {
-  font-size: 4rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ukuran font otomatis menyesuaikan layar */
+  background: linear-gradient(to right, #495057, #ff8fab);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Membuat teks berwarna gradasi */
+  margin-bottom: 20px;
 }
 
-.btn-cek {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: white;
-  color: var(--pink-dark);
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: 0.3s;
-  border: 2px solid transparent;
-}
-
-.btn-cek:hover {
-  background-color: var(--pink-dark);
-  color: white;
-  transform: translateY(-3px); /* Efek melompat kecil */
-}
-
-/* --- Container Umum --- */
+/* --- Kartu Anggota (Gaya Minimalis) --- */
 .section-container {
-  padding: 80px 10%;
+  padding: 100px 5%;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-/* Garis dekoratif di bawah judul */
-.section-title::after {
-  content: '';
-  width: 50px;
-  height: 4px;
-  background: var(--biru-muda);
-  display: block;
-  margin: 10px auto;
-  border-radius: 2px;
-}
-
-/* --- Grid Anggota Kelompok --- */
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsif otomatis */
-  gap: 25px; /* Jarak antar kartu */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .kelompok-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
+  background: #ffffff;
+  border-radius: var(--radius);
   text-decoration: none;
-  color: inherit;
-  box-shadow: var(--shadow);
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi pegas */
 }
 
 .kelompok-card:hover {
-  transform: translateY(-10px); /* Efek kartu naik saat kursor di atasnya */
+  transform: scale(1.03); /* Membesar sedikit saat hover */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 
 .card-img img {
   width: 100%;
-  height: 300px;
-  object-fit: cover; /* Agar gambar tidak gepeng */
+  height: 350px;
+  object-fit: cover;
+  filter: grayscale(20%); /* Memberi kesan estetik kalem */
+  transition: 0.4s;
+}
+
+.kelompok-card:hover img {
+  filter: grayscale(0%); /* Warna kembali penuh saat hover */
 }
 
 .card-info {
   padding: 20px;
-  text-align: center;
+  background: white;
 }
 
-.card-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-  color: var(--text-dark);
-}
-
-/* --- Makalah & Video (Iframe) --- */
-.content-wrapper, .video-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
+/* --- Laporan & Video --- */
 .pdf-container, .video-container {
-  width: 100%;
-  height: 500px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-  border: 5px solid white;
+  border-radius: var(--radius);
+  border: none;
+  box-shadow: 0 10px 30px rgba(162, 210, 255, 0.3); /* Shadow berwarna biru muda */
+  height: 600px;
 }
 
-.content-desc, .video-desc {
-  text-align: center;
+/* --- Tombol Unduh --- */
+.btn-cek {
+  background: var(--accent-blue);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 25px;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(162, 210, 255, 0.4);
+}
+
+.btn-cek:hover {
+  background: #90caf9;
+  transform: translateY(-2px);
 }
 
 /* --- Footer --- */
 footer {
-  background: var(--text-dark);
-  color: white;
+  padding: 40px;
   text-align: center;
-  padding: 30px 0;
-  margin-top: 50px;
-}
-
-/* --- Responsivitas untuk Layar Kecil (HP) --- */
-@media (max-width: 768px) {
-  .hero-overlay h1 {
-    font-size: 2.5rem;
-  }
-  
-  .nav-links {
-    display: none; /* Kamu bisa kembangkan menu hamburger nanti */
-  }
-
-  .pdf-container, .video-container {
-    height: 300px;
-  }
+  font-size: 0.8rem;
+  border-top: 1px solid #eee;
 }
