@@ -1,4 +1,4 @@
-/* --- Root Variables --- */
+/* --- Root Variables: Warna Neo-Brutalism Tetap --- */
 :root {
   --bg-page: #fff5f8;
   --ink: #2b2b2b;
@@ -6,6 +6,8 @@
   --pink-pop: #ffafcc;
   --white: #ffffff;
   --border-size: 3px;
+  /* Font Stack Aman: Menggunakan font bawaan OS */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* --- Reset & Base --- */
@@ -13,50 +15,50 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body {
   background-color: var(--bg-page);
   color: var(--ink);
-  padding: 10px; /* Padding body dikecilkan biar nggak sempit di HP */
-  line-height: 1.4; /* Jarak antar baris biar teks nggak dempet */
+  padding: 10px;
+  line-height: 1.5; /* Jarak antar baris yang lebih nyaman di mata */
+  font-family: var(--font-main); /* Menggunakan font sistem */
+  -webkit-font-smoothing: antialiased; /* Biar tulisan di Mac/iPhone makin tajem */
 }
 
-/* --- Navigasi: Anti-Tumpuk --- */
+/* --- Navigasi --- */
 header {
   max-width: 1100px;
   margin: 10px auto 30px;
   background: var(--white);
   border: var(--border-size) solid var(--ink);
-  box-shadow: 4px 4px 0px var(--ink);
-  padding: 15px 20px;
-  border-radius: 15px;
+  box-shadow: 5px 5px 0px var(--ink);
+  padding: 12px 20px;
+  border-radius: 12px;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Supaya kalau menu kepanjangan, dia turun otomatis (nggak tumpuk) */
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .logo {
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   background: var(--pink-pop);
-  padding: 5px 12px;
+  padding: 6px 15px;
   border: 2px solid var(--ink);
-  white-space: nowrap; /* Logo nggak bakal kepotong jadi 2 baris */
+  display: inline-block;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 15px;
-  flex-wrap: wrap; /* Menjaga menu tetap rapi di layar kecil */
+  gap: 10px;
 }
 
 .nav-links a {
@@ -64,10 +66,10 @@ nav {
   color: var(--ink);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  border-radius: 5px;
-  transition: 0.2s;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: 0.2s ease;
 }
 
 .nav-links a:hover {
@@ -75,7 +77,7 @@ nav {
   box-shadow: 2px 2px 0px var(--ink);
 }
 
-/* --- Hero Section: Responsif Font --- */
+/* --- Hero Section --- */
 .hero-kelompok {
   display: flex;
   flex-direction: column;
@@ -84,22 +86,30 @@ nav {
   min-height: 50vh;
   background: var(--blue-pop);
   border: var(--border-size) solid var(--ink);
-  border-radius: 25px;
+  border-radius: 20px;
   box-shadow: 8px 8px 0px var(--pink-pop);
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   padding: 40px 20px;
   text-align: center;
 }
 
 .hero-overlay h1 {
-  /* clamp = (ukuran min, ukuran fleksibel, ukuran max) agar tidak tumpuk di HP */
-  font-size: clamp(2rem, 10vw, 4rem); 
+  /* Font size fleksibel agar tidak tumpuk */
+  font-size: clamp(2rem, 8vw, 4.5rem);
   font-weight: 900;
   color: var(--white);
   -webkit-text-stroke: 1.5px var(--ink);
-  line-height: 1.1;
-  margin-bottom: 20px;
-  word-wrap: break-word; /* Biar teks panjang nggak keluar kotak */
+  line-height: 1; /* Rapat tapi tidak tumpuk */
+  margin-bottom: 15px;
+}
+
+.hero-overlay p {
+  font-weight: 600;
+  margin-bottom: 25px;
+  background: var(--white);
+  display: inline-block;
+  padding: 5px 15px;
+  border: 2px solid var(--ink);
 }
 
 /* --- Tombol --- */
@@ -107,92 +117,99 @@ nav {
   display: inline-block;
   background: var(--pink-pop);
   color: var(--ink);
-  padding: 12px 25px;
+  padding: 12px 30px;
   text-decoration: none;
   font-weight: 800;
+  text-transform: uppercase;
   border: var(--border-size) solid var(--ink);
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 4px 4px 0px var(--ink);
   transition: 0.1s;
 }
 
+.btn-cek:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--ink);
+}
+
 /* --- Kartu Anggota --- */
 .section-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 10px;
+  padding: 40px 0;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  font-weight: 900;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .kelompok-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 25px;
 }
 
 .kelompok-card {
   background: var(--white);
   border: var(--border-size) solid var(--ink);
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 15px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 6px 6px 0px var(--blue-pop);
+  box-shadow: 5px 5px 0px var(--blue-pop);
   transition: 0.2s;
-  display: block; /* Pastikan link membungkus dengan benar */
+}
+
+.kelompok-card:hover {
+  box-shadow: 8px 8px 0px var(--pink-pop);
+  transform: translateY(-5px);
 }
 
 .card-img img {
   width: 100%;
-  height: 250px;
+  height: 280px;
   object-fit: cover;
   border: 2px solid var(--ink);
-  border-radius: 12px;
+  border-radius: 10px;
   margin-bottom: 15px;
 }
 
 .card-info h3 {
   font-size: 1rem;
   font-weight: 800;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
-/* --- Laporan & Video Container --- */
+/* --- Laporan & Video --- */
 .pdf-container, .video-container {
   border: var(--border-size) solid var(--ink);
   background: var(--white);
-  border-radius: 20px;
-  box-shadow: 10px 10px 0px var(--ink);
-  height: 450px; /* Diperpendek sedikit biar pas di layar */
+  border-radius: 15px;
+  box-shadow: 8px 8px 0px var(--ink);
+  height: 500px;
   margin-bottom: 20px;
-  position: relative;
-}
-
-iframe {
-  border: none;
+  overflow: hidden;
 }
 
 /* --- Footer --- */
 footer {
-  margin-top: 80px;
+  margin-top: 60px;
   padding: 30px;
   background: var(--ink);
   color: var(--white);
   text-align: center;
-  border-radius: 20px 20px 0 0;
-  font-weight: 600;
+  border-radius: 15px 15px 0 0;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-/* --- Fix khusus HP --- */
+/* --- Respon HP Kecil --- */
 @media (max-width: 480px) {
-  header { padding: 10px; }
-  .logo { font-size: 1rem; }
-  .nav-links a { font-size: 0.7rem; padding: 3px 5px; }
-  .pdf-container, .video-container { height: 300px; box-shadow: 5px 5px 0px var(--ink); }
+  .hero-overlay h1 { font-size: 2.2rem; }
+  .pdf-container, .video-container { height: 350px; }
+  .nav-links { gap: 5px; }
 }
