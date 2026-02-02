@@ -1,11 +1,11 @@
-/* --- Root Variables: Warna Pastel Kontras --- */
+/* --- Root Variables --- */
 :root {
-  --bg-page: #fff5f8;       /* Pink putih tulang banget */
-  --ink: #2b2b2b;           /* Hitam tinta (biar nggak kaku) */
-  --blue-pop: #a2d2ff;      /* Biru muda */
-  --pink-pop: #ffafcc;      /* Pink bubbly */
+  --bg-page: #fff5f8;
+  --ink: #2b2b2b;
+  --blue-pop: #a2d2ff;
+  --pink-pop: #ffafcc;
   --white: #ffffff;
-  --border-size: 3px;       /* Ketebalan garis tepi */
+  --border-size: 3px;
 }
 
 /* --- Reset & Base --- */
@@ -19,17 +19,18 @@
 body {
   background-color: var(--bg-page);
   color: var(--ink);
-  padding: 20px; /* Memberi ruang di pinggir seluruh body */
+  padding: 10px; /* Padding body dikecilkan biar nggak sempit di HP */
+  line-height: 1.4; /* Jarak antar baris biar teks nggak dempet */
 }
 
-/* --- Navigasi Kotak-Kotak --- */
+/* --- Navigasi: Anti-Tumpuk --- */
 header {
-  max-width: 1200px;
-  margin: 0 auto 40px;
+  max-width: 1100px;
+  margin: 10px auto 30px;
   background: var(--white);
   border: var(--border-size) solid var(--ink);
-  box-shadow: 6px 6px 0px var(--ink); /* Bayangan tajam khas Neo-Brutalism */
-  padding: 15px 30px;
+  box-shadow: 4px 4px 0px var(--ink);
+  padding: 15px 20px;
   border-radius: 15px;
 }
 
@@ -37,21 +38,25 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Supaya kalau menu kepanjangan, dia turun otomatis (nggak tumpuk) */
+  gap: 10px;
 }
 
 .logo {
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  font-size: 1.2rem;
   background: var(--pink-pop);
-  padding: 5px 15px;
+  padding: 5px 12px;
   border: 2px solid var(--ink);
+  white-space: nowrap; /* Logo nggak bakal kepotong jadi 2 baris */
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap; /* Menjaga menu tetap rapi di layar kecil */
 }
 
 .nav-links a {
@@ -59,90 +64,103 @@ nav {
   color: var(--ink);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: 0.2s;
 }
 
 .nav-links a:hover {
   background: var(--blue-pop);
-  outline: 2px solid var(--ink);
+  box-shadow: 2px 2px 0px var(--ink);
 }
 
-/* --- Hero Section yang Gak Biasa --- */
+/* --- Hero Section: Responsif Font --- */
 .hero-kelompok {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 50vh;
   background: var(--blue-pop);
   border: var(--border-size) solid var(--ink);
-  border-radius: 30px;
-  box-shadow: 12px 12px 0px var(--pink-pop); /* Bayangan warna pink */
-  margin-bottom: 80px;
+  border-radius: 25px;
+  box-shadow: 8px 8px 0px var(--pink-pop);
+  margin-bottom: 60px;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .hero-overlay h1 {
-  font-size: 5rem;
+  /* clamp = (ukuran min, ukuran fleksibel, ukuran max) agar tidak tumpuk di HP */
+  font-size: clamp(2rem, 10vw, 4rem); 
   font-weight: 900;
   color: var(--white);
-  -webkit-text-stroke: 2px var(--ink); /* Garis tepi di teks */
-  letter-spacing: -2px;
+  -webkit-text-stroke: 1.5px var(--ink);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  word-wrap: break-word; /* Biar teks panjang nggak keluar kotak */
 }
 
-/* --- Tombol "Klik Me" --- */
+/* --- Tombol --- */
 .btn-cek {
+  display: inline-block;
   background: var(--pink-pop);
   color: var(--ink);
-  padding: 15px 30px;
+  padding: 12px 25px;
   text-decoration: none;
   font-weight: 800;
   border: var(--border-size) solid var(--ink);
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 4px 4px 0px var(--ink);
   transition: 0.1s;
 }
 
-.btn-cek:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0px var(--ink);
+/* --- Kartu Anggota --- */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 10px;
 }
 
-/* --- Kartu Anggota Zig-Zag --- */
+.section-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .kelompok-card {
   background: var(--white);
   border: var(--border-size) solid var(--ink);
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 8px 8px 0px var(--blue-pop);
+  box-shadow: 6px 6px 0px var(--blue-pop);
   transition: 0.2s;
-}
-
-/* Efek kartu miring-miring lucu */
-.kelompok-card:nth-child(even) {
-  transform: rotate(-2deg);
-}
-.kelompok-card:nth-child(odd) {
-  transform: rotate(2deg);
-}
-
-.kelompok-card:hover {
-  transform: rotate(0deg) scale(1.02);
-  box-shadow: 10px 10px 0px var(--pink-pop);
+  display: block; /* Pastikan link membungkus dengan benar */
 }
 
 .card-img img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border: var(--border-size) solid var(--ink);
-  border-radius: 15px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.card-info h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 5px;
 }
 
 /* --- Laporan & Video Container --- */
@@ -150,23 +168,31 @@ nav {
   border: var(--border-size) solid var(--ink);
   background: var(--white);
   border-radius: 20px;
-  box-shadow: 15px 15px 0px var(--ink);
-  height: 600px;
-  overflow: hidden;
+  box-shadow: 10px 10px 0px var(--ink);
+  height: 450px; /* Diperpendek sedikit biar pas di layar */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+iframe {
+  border: none;
 }
 
 /* --- Footer --- */
 footer {
-  margin-top: 100px;
-  padding: 40px;
+  margin-top: 80px;
+  padding: 30px;
   background: var(--ink);
   color: var(--white);
   text-align: center;
   border-radius: 20px 20px 0 0;
+  font-weight: 600;
 }
 
-/* --- Mobile --- */
-@media (max-width: 768px) {
-  .hero-overlay h1 { font-size: 3rem; }
-  .hero-kelompok { margin: 10px; }
+/* --- Fix khusus HP --- */
+@media (max-width: 480px) {
+  header { padding: 10px; }
+  .logo { font-size: 1rem; }
+  .nav-links a { font-size: 0.7rem; padding: 3px 5px; }
+  .pdf-container, .video-container { height: 300px; box-shadow: 5px 5px 0px var(--ink); }
 }
