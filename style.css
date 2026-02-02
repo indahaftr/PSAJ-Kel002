@@ -1,49 +1,64 @@
-/* --- Root Variables: Untuk memudahkan pengaturan warna di seluruh dokumen --- */
+/* ========================================
+   SISTEM DESAIN: Biru Muda, Pink, & Putih Tulang
+   Dibuat untuk: Website Kelompok 2
+   ========================================
+*/
+
 :root {
-  --biru-muda: #add8e6;      /* Warna biru langit cerah */
-  --pink-soft: #ffb6c1;      /* Warna pink lembut */
-  --putih-tulang: #f9f9f9;   /* Warna background yang tidak terlalu silau */
-  --gelap: #333333;          /* Warna teks utama */
-  --putih-murni: #ffffff;    /* Warna kartu dan navigasi */
-  --transition: all 0.3s ease; /* Durasi animasi halus */
+  /* Palet Warna Utama */
+  --biru-muda: #add8e6;      /* Light Blue */
+  --pink-soft: #ffb6c1;      /* Soft Pink */
+  --putih-tulang: #fefaf6;   /* Bone White (lebih hangat) */
+  --putih-murni: #ffffff;
+  --gelap: #444444;          /* Abu-abu tua agar tidak terlalu tajam seperti hitam */
+  
+  /* Efek & Transisi */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-bold: 0 15px 35px rgba(255, 182, 193, 0.3);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* --- Reset Dasar: Menghilangkan margin bawaan browser --- */
+/* --- Reset & Base Styles --- */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Agar padding tidak merusak lebar elemen */
-  font-family: 'Poppins', sans-serif; /* Menggunakan font dari Google Fonts */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  line-height: 1.6;
   background-color: var(--putih-tulang);
   color: var(--gelap);
-  scroll-behavior: smooth; /* Efek scrolling halus saat klik menu navigasi */
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* --- Navigasi --- */
+/* --- Navigasi Modern --- */
 header {
-  background-color: var(--putih-murni);
+  background-color: rgba(255, 255, 255, 0.9); /* Transparan sedikit (Glassmorphism) */
+  backdrop-filter: blur(10px); /* Efek blur di belakang navbar */
   padding: 1rem 5%;
-  position: fixed; /* Navigasi tetap di atas saat scroll */
+  position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Efek bayangan tipis */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 nav {
   display: flex;
-  justify-content: space-between; /* Logo di kiri, menu di kanan */
+  justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  color: var(--biru-muda);
+  color: #87ceeb; /* Biru agak tegas sedikit */
+  letter-spacing: 1px;
 }
 
 .logo span {
@@ -52,150 +67,204 @@ nav {
 
 .nav-links {
   display: flex;
-  list-style: none; /* Menghilangkan titik list */
+  list-style: none;
 }
 
 .nav-links li {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .nav-links a {
-  text-decoration: none; /* Menghilangkan garis bawah link */
+  text-decoration: none;
   color: var(--gelap);
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 0.95rem;
   transition: var(--transition);
 }
 
 .nav-links a:hover {
-  color: var(--pink-soft); /* Berubah warna saat kursor di atasnya */
+  color: var(--pink-soft);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section (Background Gradasi) --- */
 .hero-kelompok {
-  height: 100vh; /* Tinggi satu layar penuh */
-  background: linear-gradient(rgba(173, 216, 230, 0.6), rgba(255, 182, 193, 0.4)), 
-              url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80') center/cover;
+  height: 100vh;
+  /* Gradasi Linear Mewah */
+  background: linear-gradient(135deg, #d4f1f9 0%, #ffd1dc 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  padding: 0 20px;
+}
+
+.hero-overlay p:first-child {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
 }
 
 .hero-overlay h1 {
-  font-size: 4rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ukuran font adaptif */
+  font-weight: 700;
+  color: var(--gelap);
+  margin-bottom: 15px;
+  line-height: 1.2;
 }
 
+.hero-overlay p:last-of-type {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Tombol Cek Anggota */
 .btn-cek {
   display: inline-block;
-  padding: 12px 30px;
-  background-color: var(--pink-soft);
-  color: white;
+  padding: 15px 40px;
+  background: var(--putih-murni);
+  color: var(--pink-soft);
   text-decoration: none;
-  border-radius: 50px; /* Membuat tombol lonjong */
-  transition: var(--transition);
+  border-radius: 50px;
   font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
 }
 
 .btn-cek:hover {
-  background-color: var(--biru-muda);
-  transform: translateY(-3px); /* Efek melayang sedikit */
+  background: var(--pink-soft);
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-bold); /* Efek glow pink */
 }
 
-/* --- Layout Umum Section --- */
+/* --- Layout Section --- */
 .section-container {
-  padding: 80px 10% 100px; /* Jarak antar bagian */
+  padding: 100px 10%;
 }
 
 .section-title {
   text-align: center;
-  margin-bottom: 50px;
-  font-size: 2rem;
-  position: relative;
+  margin-bottom: 60px;
+  font-size: 2.2rem;
+  font-weight: 600;
 }
 
 .section-title::after {
   content: '';
-  width: 60px;
-  height: 4px;
+  display: block;
+  width: 50px;
+  height: 5px;
   background: var(--biru-muda);
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 15px auto 0;
+  border-radius: 10px;
 }
 
-.bg-light { background-color: var(--putih-tulang); }
-.bg-white { background-color: var(--putih-murni); }
-
-/* --- Kartu Anggota (Grid System) --- */
+/* --- Grid Anggota Kelompok --- */
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsif otomatis */
-  gap: 25px; /* Jarak antar kartu */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .kelompok-card {
   background: var(--putih-murni);
-  border-radius: 15px;
-  overflow: hidden; /* Agar gambar tidak keluar dari sudut membulat */
+  border-radius: 20px;
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-soft);
   transition: var(--transition);
-  border-bottom: 4px solid var(--biru-muda);
 }
 
 .kelompok-card:hover {
-  transform: scale(1.03); /* Membesar sedikit saat hover */
-  border-bottom-color: var(--pink-soft);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .card-img img {
   width: 100%;
-  height: 250px;
-  object-fit: cover; /* Gambar tetap proporsional */
+  height: 300px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.kelompok-card:hover .card-img img {
+  transform: scale(1.1); /* Efek zoom gambar saat hover */
 }
 
 .card-info {
-  padding: 20px;
+  padding: 25px;
   text-align: center;
+  border-top: 5px solid var(--biru-muda);
 }
 
-/* --- Makalah & Video Section --- */
+.card-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: var(--gelap);
+}
+
+.card-info p {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* --- Section Makalah & Video --- */
 .content-wrapper, .video-wrapper {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .pdf-container, .video-container {
   width: 100%;
-  height: 500px;
-  border-radius: 15px;
+  height: 550px;
+  border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-  background-color: #000;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  background-color: #eee;
+  border: 8px solid white; /* Frame putih estetik */
 }
 
-.content-desc, .video-desc {
-  text-align: center;
+.content-desc p, .video-desc p {
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #777;
 }
 
 /* --- Footer --- */
 footer {
-  background-color: var(--biru-muda);
-  color: white;
+  background: white;
+  padding: 40px 20px;
   text-align: center;
-  padding: 30px;
-  margin-top: 50px;
+  border-top: 1px solid #eee;
 }
 
-/* --- Media Queries (Agar tampilan bagus di HP) --- */
+footer p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* --- Responsivitas HP --- */
 @media (max-width: 768px) {
-  .nav-links { display: none; } /* Sembunyikan menu di HP (bisa ditambah toggle nanti) */
-  .hero-overlay h1 { font-size: 2.5rem; }
-  .pdf-container, .video-container { height: 300px; }
+  .nav-links {
+    display: none; /* Sembunyikan menu di HP agar tidak berantakan */
+  }
+  
+  .section-container {
+    padding: 60px 5%;
+  }
+
+  .pdf-container, .video-container {
+    height: 350px;
+  }
+  
+  .hero-overlay h1 {
+    font-size: 2.8rem;
+  }
 }
