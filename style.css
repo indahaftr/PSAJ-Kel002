@@ -1,72 +1,176 @@
-/* --- REVISI HERO SECTION (GRADASI LUCU) --- */
+/* CSS REVISI TOTAL - CLEAN, RAPI, & BUBBLY */
+
+:root {
+    --navy: #001f3f;
+    --pink-pastel: #ffdeeb; /* Pink yang lebih soft */
+    --pink-dark: #ff2a6d;   /* Pink untuk teks penting */
+    --white: #ffffff;
+    --soft-gray: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+/* --- NAVIGASI RAPI --- */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--pink-pastel);
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.logo span {
+    color: var(--pink-dark);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--navy);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--pink-dark);
+}
+
+/* --- HERO DENGAN GRADASI TIPIS (LUCU & BERSIH) --- */
 .hero-kelompok {
     height: 100vh;
-    /* Mengganti gambar dengan gradasi linear yang lembut */
-    background: linear-gradient(135deg, #001f3f 0%, #ffc0cb 100%); 
+    /* Gradasi lembut dari putih ke pink pastel */
+    background: linear-gradient(180deg, var(--white) 0%, var(--pink-pastel) 100%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--white);
-    /* Memberikan efek gelombang di bagian bawah (opsional) */
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+    padding: 0 10%;
 }
 
 .hero-overlay h1 {
-    font-size: 3.5rem;
-    margin: 10px 0;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    /* Memberi bayangan teks agar lebih 'pop up' */
-    text-shadow: 3px 3px 0px var(--accent-pink); 
+    font-size: 4rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: -1px;
 }
 
 .hero-overlay p {
     font-size: 1.2rem;
-    color: #ffffff;
-    background: rgba(255, 42, 109, 0.2); /* Kotak transparan tipis */
-    display: inline-block;
-    padding: 5px 20px;
-    border-radius: 20px;
-    backdrop-filter: blur(5px); /* Efek kaca kekinian */
+    color: #666;
+    margin-bottom: 30px;
 }
 
-/* --- REVISI TOMBOL (LEBIH BULAT & LUCU) --- */
 .btn-cek {
-    display: inline-block;
-    padding: 15px 40px;
-    background: var(--accent-pink);
-    color: var(--primary-navy); /* Tulisan navy di atas tombol pink */
+    padding: 15px 35px;
+    background: var(--pink-dark);
+    color: white;
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: 800;
-    margin-top: 20px;
-    box-shadow: 0 8px 0px #e6a1af; /* Efek tombol 3D seperti game */
-    transition: 0.2s;
+    border-radius: 100px; /* Sangat bulat */
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(255, 42, 109, 0.2);
+    transition: 0.3s;
 }
 
 .btn-cek:hover {
-    transform: translateY(4px); /* Tombol seolah tertekan */
-    box-shadow: 0 4px 0px #e6a1af;
+    transform: scale(1.05);
+    background: var(--navy);
 }
 
-/* --- REVISI KARTU ANGGOTA (LEBIH SOFT) --- */
+/* --- GRID ANGGOTA (DIJAMIN SEJAJAR) --- */
+.section-container {
+    padding: 100px 10%;
+}
+
+.kelompok-grid {
+    display: grid;
+    /* Membuat kolom otomatis sejajar */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
 .kelompok-card {
-    background: var(--white);
-    border-radius: 30px; /* Lebih bulat lebih lucu */
-    overflow: hidden;
+    background: white;
+    border-radius: 25px;
+    padding: 15px;
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 10px 30px rgba(255, 192, 203, 0.3); /* Bayangan warna pink soft */
-    transition: var(--transition);
+    border: 1px solid var(--pink-pastel);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.kelompok-card:hover {
+    box-shadow: 0 15px 30px rgba(255, 192, 203, 0.4);
+    transform: translateY(-5px);
 }
 
 .card-img img {
     width: 100%;
-    height: 250px;
+    height: 300px;
     object-fit: cover;
-    /* Memberikan lengkungan sedikit di bawah foto */
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+}
+
+.card-info h3 {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: var(--navy);
+}
+
+.card-info p {
+    color: var(--pink-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* --- PDF & VIDEO (LEBARNYA PAS) --- */
+.pdf-container, .video-container {
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 5px solid var(--pink-pastel);
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 50px 0;
+    background: var(--soft-gray);
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
 }
