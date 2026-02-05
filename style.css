@@ -1,4 +1,4 @@
-/* --- Root Variables --- */
+/* --- Root Variables: Warna Neo-Brutalism --- */
 :root {
   --bg-page: #fff5f8;
   --ink: #2b2b2b;
@@ -6,69 +6,59 @@
   --pink-pop: #ffafcc;
   --white: #ffffff;
   --border-size: 3px;
-  /* Font Aman tapi Berkarakter */
-  --font-main: 'Trebuchet MS', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Font Stack : Menggunakan font bawaan OS */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* --- Reset & Base --- */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Sangat penting agar padding tidak merusak lebar */
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--bg-page);
   color: var(--ink);
-  padding: 15px; /* Memberi ruang di pinggir layar HP */
-  line-height: 1.4;
-  font-family: var(--font-main);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; /* Mencegah layar geser kanan-kiri yang gak jelas */
+  padding: 10px;
+  line-height: 1.5; /* Jarak antar baris yang lebih nyaman di mata */
+  font-family: var(--font-main); /* Menggunakan font sistem */
+  -webkit-font-smoothing: antialiased; /* Biar tulisan di Mac/iPhone makin tajem */
 }
 
-/* --- Navigasi: Fleksibel HP ke Laptop --- */
+/* --- Navigasi --- */
 header {
   max-width: 1100px;
-  margin: 0 auto 30px;
+  margin: 10px auto 30px;
   background: var(--white);
   border: var(--border-size) solid var(--ink);
   box-shadow: 5px 5px 0px var(--ink);
-  padding: 15px;
+  padding: 12px 20px;
   border-radius: 12px;
 }
 
 nav {
   display: flex;
-  flex-direction: column; /* Default HP: Susun logo & menu ke bawah */
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 15px;
-}
-
-/* Layar Laptop: Susun ke samping */
-@media (min-width: 768px) {
-  nav {
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
 
 .logo {
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   background: var(--pink-pop);
   padding: 6px 15px;
   border: 2px solid var(--ink);
-  white-space: nowrap; /* Biar logo gak pecah 2 baris */
+  display: inline-block;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 8px;
-  flex-wrap: wrap; /* Biar menu gak kepotong kalau layar sangat kecil */
-  justify-content: center;
+  gap: 10px;
 }
 
 .nav-links a {
@@ -76,55 +66,50 @@ nav {
   color: var(--ink);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  padding: 6px 10px;
+  font-size: 0.8rem;
+  padding: 5px 10px;
   border-radius: 6px;
-  border: 2px solid transparent; /* Persiapan untuk efek hover */
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 .nav-links a:hover {
   background: var(--blue-pop);
-  border-color: var(--ink);
   box-shadow: 2px 2px 0px var(--ink);
 }
 
-/* --- Hero Section: Font yang "Cair" --- */
+/* --- Hero Section --- */
 .hero-kelompok {
-  max-width: 1100px;
-  margin: 0 auto 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 45vh;
+  min-height: 50vh;
   background: var(--blue-pop);
   border: var(--border-size) solid var(--ink);
   border-radius: 20px;
   box-shadow: 8px 8px 0px var(--pink-pop);
-  padding: 40px 15px;
+  margin-bottom: 50px;
+  padding: 40px 20px;
   text-align: center;
 }
 
 .hero-overlay h1 {
-  /* clamp(minimal, fleksibel, maksimal) agar font nyesuaiin layar */
-  font-size: clamp(2.2rem, 10vw, 4.5rem);
+  /* Font size fleksibel agar tidak tumpuk */
+  font-size: clamp(2rem, 8vw, 4.5rem);
   font-weight: 900;
   color: var(--white);
   -webkit-text-stroke: 1.5px var(--ink);
-  line-height: 0.95;
+  line-height: 1; /* Rapat tapi tidak tumpuk */
   margin-bottom: 15px;
-  text-transform: uppercase;
 }
 
 .hero-overlay p {
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 25px;
   background: var(--white);
   display: inline-block;
   padding: 5px 15px;
   border: 2px solid var(--ink);
-  font-size: 0.9rem;
 }
 
 /* --- Tombol --- */
@@ -132,26 +117,26 @@ nav {
   display: inline-block;
   background: var(--pink-pop);
   color: var(--ink);
-  padding: 12px 25px;
+  padding: 12px 30px;
   text-decoration: none;
   font-weight: 800;
   text-transform: uppercase;
   border: var(--border-size) solid var(--ink);
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 4px 4px 0px var(--ink);
   transition: 0.1s;
 }
 
 .btn-cek:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0px var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--ink);
 }
 
-/* --- Kartu Anggota: Grid Otomatis --- */
+/* --- Kartu Anggota --- */
 .section-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 0 50px;
+  padding: 40px 0;
 }
 
 .section-title {
@@ -164,8 +149,7 @@ nav {
 
 .kelompok-grid {
   display: grid;
-  /* Mengatur kolom otomatis: minimal 260px, maksimal sisa ruang */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
@@ -177,21 +161,21 @@ nav {
   text-decoration: none;
   color: inherit;
   box-shadow: 5px 5px 0px var(--blue-pop);
-  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.2s;
 }
 
 .kelompok-card:hover {
   box-shadow: 8px 8px 0px var(--pink-pop);
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-5px);
 }
 
 .card-img img {
   width: 100%;
   height: 280px;
-  object-fit: cover; /* Foto gak bakal gepeng */
+  object-fit: cover;
   border: 2px solid var(--ink);
   border-radius: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .card-info h3 {
@@ -200,39 +184,32 @@ nav {
   margin-bottom: 3px;
 }
 
-/* --- Laporan & Video: Menyesuaikan Layar --- */
+/* --- Laporan & Video --- */
 .pdf-container, .video-container {
   border: var(--border-size) solid var(--ink);
   background: var(--white);
   border-radius: 15px;
   box-shadow: 8px 8px 0px var(--ink);
-  height: 350px; /* Tinggi default HP */
-  margin-bottom: 25px;
+  height: 500px;
+  margin-bottom: 20px;
   overflow: hidden;
-}
-
-/* Layar Laptop: Iframe lebih besar */
-@media (min-width: 768px) {
-  .pdf-container, .video-container {
-    height: 550px;
-  }
 }
 
 /* --- Footer --- */
 footer {
-  margin-top: 50px;
-  padding: 30px 15px;
+  margin-top: 60px;
+  padding: 30px;
   background: var(--ink);
   color: var(--white);
   text-align: center;
   border-radius: 15px 15px 0 0;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-/* --- Perbaikan Tambahan untuk Layar Sangat Kecil --- */
-@media (max-width: 400px) {
-  .nav-links a { font-size: 0.7rem; padding: 4px 6px; }
-  .logo { font-size: 1rem; }
-  .hero-kelompok { padding: 30px 10px; }
+/* --- Respon HP Kecil --- */
+@media (max-width: 480px) {
+  .hero-overlay h1 { font-size: 2.2rem; }
+  .pdf-container, .video-container { height: 350px; }
+  .nav-links { gap: 5px; }
 }
