@@ -6,9 +6,9 @@
   --pink-pop: #ffafcc;
   --white: #ffffff;
   --border-size: 3px;
-  /* Font Judul: Impact (Tegas/Bold) | Font Isi: Trebuchet MS (Modern/Bubbly) */
+  /* Font Aman tapi Berkarakter */
   --font-header: 'Impact', 'Arial Black', sans-serif;
-  --font-body: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --font-body: 'Trebuchet MS', sans-serif;
 }
 
 /* --- Reset & Base --- */
@@ -21,181 +21,175 @@
 body {
   background-color: var(--bg-page);
   color: var(--ink);
-  padding: 10px;
-  line-height: 1.6;
-  font-family: var(--font-body); /* Font Trebuchet yang manis buat isi teks */
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body);
+  line-height: 1.4;
+  /* Supaya konten tidak nempel ke pinggir layar HP */
+  padding: 15px; 
 }
 
-/* --- Navigasi --- */
+/* --- Navigasi: Fleksibel Banget --- */
 header {
-  max-width: 1100px;
-  margin: 10px auto 30px;
+  max-width: 1000px;
+  margin: 0 auto 20px;
   background: var(--white);
   border: var(--border-size) solid var(--ink);
-  box-shadow: 5px 5px 0px var(--ink);
-  padding: 12px 20px;
-  border-radius: 12px;
+  box-shadow: 4px 4px 0px var(--ink);
+  padding: 15px;
+  border-radius: 15px;
 }
 
 nav {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Default HP: Susun ke bawah */
   align-items: center;
-  flex-wrap: wrap;
   gap: 15px;
 }
 
+/* Layar Laptop: Susun ke samping */
+@media (min-width: 768px) {
+  nav { flex-direction: row; justify-content: space-between; }
+}
+
 .logo {
-  font-family: var(--font-header); /* Pakai Impact biar mencolok */
-  text-transform: uppercase;
-  font-size: 1.4rem;
+  font-family: var(--font-header);
+  font-size: 1.5rem;
   background: var(--pink-pop);
   padding: 5px 15px;
   border: 2px solid var(--ink);
-  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .nav-links {
   display: flex;
-  list-style: none;
   gap: 10px;
+  flex-wrap: wrap; /* Biar menu gak kepotong kalau layar kekecilan */
+  justify-content: center;
 }
 
 .nav-links a {
   text-decoration: none;
   color: var(--ink);
   font-weight: bold;
+  font-size: 0.8rem;
+  padding: 5px 8px;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  padding: 5px 10px;
-  transition: 0.2s;
+  border: 2px solid transparent;
 }
 
 .nav-links a:hover {
+  border-color: var(--ink);
   background: var(--blue-pop);
-  border: 2px solid var(--ink);
-  border-radius: 5px;
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section: Liquid Layout --- */
 .hero-kelompok {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 40px 20px;
   background: var(--blue-pop);
   border: var(--border-size) solid var(--ink);
-  border-radius: 20px;
   box-shadow: 8px 8px 0px var(--pink-pop);
-  margin-bottom: 50px;
-  padding: 40px 20px;
+  border-radius: 25px;
+  text-align: center;
 }
 
 .hero-overlay h1 {
-  font-family: var(--font-header); /* Pakai Impact buat kesan brutalist kuat */
-  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-family: var(--font-header);
+  /* Ukuran teks dinamis: makin kecil layar, makin kecil font */
+  font-size: clamp(2rem, 12vw, 4.5rem);
+  line-height: 1;
   color: var(--white);
-  -webkit-text-stroke: 2px var(--ink);
-  line-height: 0.9;
-  margin-bottom: 20px;
+  -webkit-text-stroke: 1.5px var(--ink);
+  margin-bottom: 15px;
   text-transform: uppercase;
 }
 
-.hero-overlay p {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-}
-
-/* --- Tombol --- */
 .btn-cek {
   display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
   background: var(--pink-pop);
   color: var(--ink);
-  padding: 12px 30px;
   text-decoration: none;
   font-family: var(--font-header);
-  font-size: 1.2rem;
-  text-transform: uppercase;
+  font-size: 1.1rem;
   border: var(--border-size) solid var(--ink);
-  border-radius: 8px;
   box-shadow: 4px 4px 0px var(--ink);
-  transition: 0.1s;
+  border-radius: 10px;
 }
 
-.btn-cek:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0px var(--ink);
-}
-
-/* --- Kartu Anggota --- */
-.section-container {
-  max-width: 1100px;
+/* --- Grid Anggota: Auto-Flow --- */
+.container {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 0;
 }
 
 .section-title {
   font-family: var(--font-header);
-  font-size: 2.2rem;
-  text-transform: uppercase;
-  margin-bottom: 30px;
   text-align: center;
-  letter-spacing: 1px;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  /* Ini kunci fleksibel: bikin kolom otomatis nyesuaiin lebar */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .kelompok-card {
   background: var(--white);
   border: var(--border-size) solid var(--ink);
-  border-radius: 15px;
   padding: 15px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 6px 6px 0px var(--blue-pop);
-  transition: 0.2s;
+  border-radius: 20px;
+  box-shadow: 5px 5px 0px var(--blue-pop);
 }
 
 .card-img img {
   width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border: 2px solid var(--ink);
+  height: 250px;
+  object-fit: cover; /* Biar foto gak gepeng */
   border-radius: 10px;
-  margin-bottom: 15px;
+  border: 2px solid var(--ink);
+  margin-bottom: 10px;
 }
 
 .card-info h3 {
   font-family: var(--font-header);
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-  color: var(--ink);
+  font-size: 1rem;
 }
 
-/* --- Laporan & Video --- */
+/* --- Laporan & Video: Full Width di HP --- */
+.content-wrapper, .video-wrapper {
+  width: 100%;
+  margin-top: 20px;
+}
+
 .pdf-container, .video-container {
+  width: 100%;
+  height: 300px; /* Default HP: Lebih pendek */
   border: var(--border-size) solid var(--ink);
-  background: var(--white);
+  box-shadow: 6px 6px 0px var(--ink);
   border-radius: 15px;
-  box-shadow: 10px 10px 0px var(--ink);
-  height: 500px;
   overflow: hidden;
+}
+
+/* Layar Laptop: Iframe lebih tinggi */
+@media (min-width: 768px) {
+  .pdf-container, .video-container { height: 500px; }
 }
 
 /* --- Footer --- */
 footer {
-  margin-top: 60px;
-  padding: 30px;
+  margin-top: 50px;
   background: var(--ink);
   color: var(--white);
   text-align: center;
+  padding: 20px;
   border-radius: 15px 15px 0 0;
-  font-weight: bold;
+  font-size: 0.8rem;
 }
