@@ -1,4 +1,4 @@
-/* --- Root Variables: Warna Neo-Brutalism Tetap --- */
+/* --- Root Variables --- */
 :root {
   --bg-page: #fff5f8;
   --ink: #2b2b2b;
@@ -6,8 +6,9 @@
   --pink-pop: #ffafcc;
   --white: #ffffff;
   --border-size: 3px;
-  /* Font Stack Aman: Menggunakan font bawaan OS */
-  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /* Font Judul: Impact (Tegas/Bold) | Font Isi: Trebuchet MS (Modern/Bubbly) */
+  --font-header: 'Impact', 'Arial Black', sans-serif;
+  --font-body: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* --- Reset & Base --- */
@@ -21,9 +22,9 @@ body {
   background-color: var(--bg-page);
   color: var(--ink);
   padding: 10px;
-  line-height: 1.5; /* Jarak antar baris yang lebih nyaman di mata */
-  font-family: var(--font-main); /* Menggunakan font sistem */
-  -webkit-font-smoothing: antialiased; /* Biar tulisan di Mac/iPhone makin tajem */
+  line-height: 1.6;
+  font-family: var(--font-body); /* Font Trebuchet yang manis buat isi teks */
+  -webkit-font-smoothing: antialiased;
 }
 
 /* --- Navigasi --- */
@@ -46,13 +47,13 @@ nav {
 }
 
 .logo {
-  font-weight: 900;
+  font-family: var(--font-header); /* Pakai Impact biar mencolok */
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   background: var(--pink-pop);
-  padding: 6px 15px;
+  padding: 5px 15px;
   border: 2px solid var(--ink);
-  display: inline-block;
+  letter-spacing: 1px;
 }
 
 .nav-links {
@@ -64,17 +65,17 @@ nav {
 .nav-links a {
   text-decoration: none;
   color: var(--ink);
-  font-weight: 700;
+  font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   padding: 5px 10px;
-  border-radius: 6px;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
 .nav-links a:hover {
   background: var(--blue-pop);
-  box-shadow: 2px 2px 0px var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 5px;
 }
 
 /* --- Hero Section --- */
@@ -90,26 +91,22 @@ nav {
   box-shadow: 8px 8px 0px var(--pink-pop);
   margin-bottom: 50px;
   padding: 40px 20px;
-  text-align: center;
 }
 
 .hero-overlay h1 {
-  /* Font size fleksibel agar tidak tumpuk */
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  font-weight: 900;
+  font-family: var(--font-header); /* Pakai Impact buat kesan brutalist kuat */
+  font-size: clamp(2.5rem, 10vw, 5rem);
   color: var(--white);
-  -webkit-text-stroke: 1.5px var(--ink);
-  line-height: 1; /* Rapat tapi tidak tumpuk */
-  margin-bottom: 15px;
+  -webkit-text-stroke: 2px var(--ink);
+  line-height: 0.9;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .hero-overlay p {
-  font-weight: 600;
-  margin-bottom: 25px;
-  background: var(--white);
-  display: inline-block;
-  padding: 5px 15px;
-  border: 2px solid var(--ink);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
 }
 
 /* --- Tombol --- */
@@ -119,7 +116,8 @@ nav {
   color: var(--ink);
   padding: 12px 30px;
   text-decoration: none;
-  font-weight: 800;
+  font-family: var(--font-header);
+  font-size: 1.2rem;
   text-transform: uppercase;
   border: var(--border-size) solid var(--ink);
   border-radius: 8px;
@@ -128,8 +126,8 @@ nav {
 }
 
 .btn-cek:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--ink);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px var(--ink);
 }
 
 /* --- Kartu Anggota --- */
@@ -140,17 +138,18 @@ nav {
 }
 
 .section-title {
-  font-size: 1.8rem;
-  font-weight: 900;
+  font-family: var(--font-header);
+  font-size: 2.2rem;
   text-transform: uppercase;
   margin-bottom: 30px;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 .kelompok-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
 }
 
 .kelompok-card {
@@ -160,13 +159,8 @@ nav {
   padding: 15px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 5px 5px 0px var(--blue-pop);
+  box-shadow: 6px 6px 0px var(--blue-pop);
   transition: 0.2s;
-}
-
-.kelompok-card:hover {
-  box-shadow: 8px 8px 0px var(--pink-pop);
-  transform: translateY(-5px);
 }
 
 .card-img img {
@@ -179,9 +173,10 @@ nav {
 }
 
 .card-info h3 {
-  font-size: 1rem;
-  font-weight: 800;
-  margin-bottom: 3px;
+  font-family: var(--font-header);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: var(--ink);
 }
 
 /* --- Laporan & Video --- */
@@ -189,9 +184,8 @@ nav {
   border: var(--border-size) solid var(--ink);
   background: var(--white);
   border-radius: 15px;
-  box-shadow: 8px 8px 0px var(--ink);
+  box-shadow: 10px 10px 0px var(--ink);
   height: 500px;
-  margin-bottom: 20px;
   overflow: hidden;
 }
 
@@ -203,13 +197,5 @@ footer {
   color: var(--white);
   text-align: center;
   border-radius: 15px 15px 0 0;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* --- Respon HP Kecil --- */
-@media (max-width: 480px) {
-  .hero-overlay h1 { font-size: 2.2rem; }
-  .pdf-container, .video-container { height: 350px; }
-  .nav-links { gap: 5px; }
+  font-weight: bold;
 }
