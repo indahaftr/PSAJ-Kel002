@@ -1,216 +1,221 @@
-/* --- Root Variables: Warna Neo-Brutalism --- */
+/* --- 1. VARIABEL WARNA (Navy & Pink) --- */
 :root {
-  --bg-page: #fff5f8;
-  --ink: #2b2b2b;
-  --blue-pop: #a2d2ff;
-  --pink-pop: #ffafcc;
-  --white: #ffffff;
-  --border-size: 3px;
-  /* Font Stack : Menggunakan font bawaan OS */
-  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --primary-navy: #001f3f;      /* Navy Utama */
+    --accent-pink: #ff2a6d;       /* Pink Vibrant untuk aksen */
+    --soft-pink: #fff0f3;        /* Pink sangat muda untuk bg section */
+    --white: #ffffff;
+    --text-dark: #2d3436;
+    --gray-light: #f8f9fa;
+    --transition: 0.3s ease-in-out;
 }
 
-/* --- Reset & Base --- */
+/* --- 2. RESET & DASAR --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Scroll halus saat klik menu */
 }
 
 body {
-  background-color: var(--bg-page);
-  color: var(--ink);
-  padding: 10px;
-  line-height: 1.5; /* Jarak antar baris yang lebih nyaman di mata */
-  font-family: var(--font-main); /* Menggunakan font sistem */
-  -webkit-font-smoothing: antialiased; /* Biar tulisan di Mac/iPhone makin tajem */
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--white);
 }
 
-/* --- Navigasi --- */
+/* --- 3. NAVIGASI --- */
 header {
-  max-width: 1100px;
-  margin: 10px auto 30px;
-  background: var(--white);
-  border: var(--border-size) solid var(--ink);
-  box-shadow: 5px 5px 0px var(--ink);
-  padding: 12px 20px;
-  border-radius: 12px;
+    background: var(--primary-navy);
+    padding: 15px 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  background: var(--pink-pop);
-  padding: 6px 15px;
-  border: 2px solid var(--ink);
-  display: inline-block;
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.logo span {
+    color: var(--accent-pink);
 }
 
 .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 10px;
+    display: flex;
+    list-style: none;
+    gap: 25px;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--ink);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  padding: 5px 10px;
-  border-radius: 6px;
-  transition: 0.2s ease;
+.nav-links li a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 400;
+    transition: var(--transition);
 }
 
-.nav-links a:hover {
-  background: var(--blue-pop);
-  box-shadow: 2px 2px 0px var(--ink);
+.nav-links li a:hover {
+    color: var(--accent-pink);
 }
 
-/* --- Hero Section --- */
+/* --- 4. HERO SECTION --- */
 .hero-kelompok {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-  background: var(--blue-pop);
-  border: var(--border-size) solid var(--ink);
-  border-radius: 20px;
-  box-shadow: 8px 8px 0px var(--pink-pop);
-  margin-bottom: 50px;
-  padding: 40px 20px;
-  text-align: center;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 31, 63, 0.7), rgba(0, 31, 63, 0.7)), 
+                url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
 }
 
 .hero-overlay h1 {
-  /* Font size fleksibel agar tidak tumpuk */
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  font-weight: 900;
-  color: var(--white);
-  -webkit-text-stroke: 1.5px var(--ink);
-  line-height: 1; /* Rapat tapi tidak tumpuk */
-  margin-bottom: 15px;
+    font-size: 4rem;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 .hero-overlay p {
-  font-weight: 600;
-  margin-bottom: 25px;
-  background: var(--white);
-  display: inline-block;
-  padding: 5px 15px;
-  border: 2px solid var(--ink);
+    font-size: 1.2rem;
+    color: var(--accent-pink);
+    font-weight: 300;
 }
 
-/* --- Tombol --- */
 .btn-cek {
-  display: inline-block;
-  background: var(--pink-pop);
-  color: var(--ink);
-  padding: 12px 30px;
-  text-decoration: none;
-  font-weight: 800;
-  text-transform: uppercase;
-  border: var(--border-size) solid var(--ink);
-  border-radius: 8px;
-  box-shadow: 4px 4px 0px var(--ink);
-  transition: 0.1s;
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--accent-pink);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid var(--accent-pink);
 }
 
 .btn-cek:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--ink);
+    background: transparent;
+    color: var(--accent-pink);
 }
 
-/* --- Kartu Anggota --- */
+/* --- 5. SECTION GENERAL --- */
 .section-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 0;
+    padding: 100px 10%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .section-title {
-  font-size: 1.8rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-  text-align: center;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--primary-navy);
+    position: relative;
 }
 
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-pink);
+    margin: 10px auto;
+}
+
+.bg-light { background-color: var(--gray-light); }
+.bg-white { background-color: var(--white); }
+
+/* --- 6. ANGGOTA GRID --- */
 .kelompok-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .kelompok-card {
-  background: var(--white);
-  border: var(--border-size) solid var(--ink);
-  border-radius: 15px;
-  padding: 15px;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 5px 5px 0px var(--blue-pop);
-  transition: 0.2s;
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
 }
 
 .kelompok-card:hover {
-  box-shadow: 8px 8px 0px var(--pink-pop);
-  transform: translateY(-5px);
+    transform: translateY(-10px);
+    border-color: var(--accent-pink);
 }
 
 .card-img img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border: 2px solid var(--ink);
-  border-radius: 10px;
-  margin-bottom: 15px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Foto tetap proporsional meski ukurannya beda */
+}
+
+.card-info {
+    padding: 20px;
+    text-align: center;
 }
 
 .card-info h3 {
-  font-size: 1rem;
-  font-weight: 800;
-  margin-bottom: 3px;
+    font-size: 1.1rem;
+    color: var(--primary-navy);
+    margin-bottom: 5px;
 }
 
-/* --- Laporan & Video --- */
+.card-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- 7. MAKALAH (IFRAME) --- */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
 .pdf-container, .video-container {
-  border: var(--border-size) solid var(--ink);
-  background: var(--white);
-  border-radius: 15px;
-  box-shadow: 8px 8px 0px var(--ink);
-  height: 500px;
-  margin-bottom: 20px;
-  overflow: hidden;
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
 }
 
-/* --- Footer --- */
+/* --- 8. FOOTER --- */
 footer {
-  margin-top: 60px;
-  padding: 30px;
-  background: var(--ink);
-  color: var(--white);
-  text-align: center;
-  border-radius: 15px 15px 0 0;
-  font-size: 0.9rem;
-  font-weight: 500;
+    background: var(--primary-navy);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
 }
 
-/* --- Respon HP Kecil --- */
-@media (max-width: 480px) {
-  .hero-overlay h1 { font-size: 2.2rem; }
-  .pdf-container, .video-container { height: 350px; }
-  .nav-links { gap: 5px; }
+/* --- 9. RESPONSIVE (Untuk HP) --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Sembunyikan menu di HP agar simpel */
+    .hero-overlay h1 { font-size: 2.5rem; }
+    .section-container { padding: 60px 5%; }
 }
-
